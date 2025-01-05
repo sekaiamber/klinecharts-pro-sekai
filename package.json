@@ -1,6 +1,6 @@
 {
-  "name": "@klinecharts/pro",
-  "version": "0.1.1",
+  "name": "klinecharts-pro-sekai",
+  "version": "0.1.2",
   "description": "Financial chart built out of the box based on KLineChart.",
   "type": "module",
   "main": "./dist/klinecharts-pro.umd.js",
@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/klinecharts/pro"
+    "url": "https://github.com/sekaiamber/klinecharts-pro-sekai.git"
   },
   "keywords": [
     "klinecharts",
@@ -64,5 +64,12 @@
   },
   "peerDependencies": {
     "klinecharts": ">=9.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/sekaiamber/klinecharts-pro-sekai/issues"
+  },
+  "homepage": "https://github.com/sekaiamber/klinecharts-pro-sekai#readme",
+  "directories": {
+    "doc": "docs"
   }
 }
