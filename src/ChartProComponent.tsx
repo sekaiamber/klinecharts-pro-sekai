@@ -33,8 +33,11 @@ import { translateTimezone } from './widget/timezone-modal/data'
 
 import { SymbolInfo, Period, ChartProOptions, ChartPro } from './types'
 
+import EventEmitter from 'eventemitter3'
+
 export interface ChartProComponentProps extends Required<Omit<ChartProOptions, 'container'>> {
   ref: (chart: ChartPro) => void
+  eventEmmiter: EventEmitter
 }
 
 interface PrevSymbolPeriod {
@@ -252,6 +255,7 @@ const ChartProComponent: Component<ChartProComponentProps> = props => {
         const [from] = adjustFromTo(p, to, 500)
         const kLineDataList = await props.datafeed.getHistoryKLineData(symbol(), p, from, to)
         widget?.applyMoreData(kLineDataList, kLineDataList.length > 0)
+        widget && props.eventEmmiter.emit('update_data', kLineDataList)
         loading = false
       }
       get()
@@ -322,8 +326,10 @@ const ChartProComponent: Component<ChartProComponentProps> = props => {
         const [from, to] = adjustFromTo(p, new Date().getTime(), 500)
         const kLineDataList = await props.datafeed.getHistoryKLineData(s, p, from, to)
         widget?.applyNewData(kLineDataList, kLineDataList.length > 0)
+        widget && props.eventEmmiter.emit('update_data', kLineDataList)
         props.datafeed.subscribe(s, p, data => {
           widget?.updateData(data)
+          widget && props.eventEmmiter.emit('update_data', [data])
         })
         loading = false
         setLoadingVisible(false)

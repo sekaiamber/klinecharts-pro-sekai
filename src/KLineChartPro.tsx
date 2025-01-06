@@ -19,6 +19,7 @@ import { utils, Nullable, DeepPartial, Styles, Chart } from 'klinecharts'
 import ChartProComponent from './ChartProComponent'
 
 import { SymbolInfo, Period, ChartPro, ChartProOptions } from './types'
+import EventEmitter from 'eventemitter3'
 
 const Logo = (
   <svg class="logo" viewBox="0 0 80 92">
@@ -28,8 +29,9 @@ const Logo = (
   </svg>
 )
 
-export default class KLineChartPro implements ChartPro {
+export default class KLineChartPro extends EventEmitter implements ChartPro {
   constructor (options: ChartProOptions) {
+    super()
     if (utils.isString(options.container)) {
       this._container = document.getElementById(options.container as string)
       if (!this._container) {
@@ -69,7 +71,9 @@ export default class KLineChartPro implements ChartPro {
           timezone={options.timezone ?? 'Asia/Shanghai'}
           mainIndicators={options.mainIndicators ?? ['MA']}
           subIndicators={options.subIndicators ?? ['VOL']}
-          datafeed={options.datafeed}/>
+          datafeed={options.datafeed}
+          eventEmmiter={this}
+        />
       ),
       this._container
     )
