@@ -330,6 +330,7 @@ const ChartProComponent: Component<ChartProComponentProps> = props => {
         props.datafeed.subscribe(s, p, data => {
           widget?.updateData(data)
           widget && props.eventEmmiter.emit('update_data', [data])
+          widget && props.eventEmmiter.emit('subscribe_update_data', data)
         })
         loading = false
         setLoadingVisible(false)
