@@ -39,7 +39,6 @@ import { PeriodBarTool } from './widget/period-bar'
 export interface ChartProComponentProps extends Required<Omit<ChartProOptions, 'container'>> {
   ref: (chart: ChartPro) => void
   eventEmmiter: EventEmitter
-  tools?: PeriodBarTool[]
 }
 
 interface PrevSymbolPeriod {

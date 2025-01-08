@@ -13,6 +13,7 @@
  */
 
 import { KLineData, Styles, DeepPartial, Chart } from 'klinecharts'
+import { PeriodBarTool } from './widget/period-bar'
 
 export interface SymbolInfo {
   ticker: string
@@ -56,6 +57,7 @@ export interface ChartProOptions {
   mainIndicators?: string[]
   subIndicators?: string[]
   datafeed: Datafeed
+  tools?: PeriodBarTool[]
 }
 
 export interface ChartPro {

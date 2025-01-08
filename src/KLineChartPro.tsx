@@ -73,6 +73,7 @@ export default class KLineChartPro extends EventEmitter implements ChartPro {
           subIndicators={options.subIndicators ?? ['VOL']}
           datafeed={options.datafeed}
           eventEmmiter={this}
+          tools={options.tools ?? []}
         />
       ),
       this._container
