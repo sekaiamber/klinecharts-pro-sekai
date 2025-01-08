@@ -34,10 +34,12 @@ import { translateTimezone } from './widget/timezone-modal/data'
 import { SymbolInfo, Period, ChartProOptions, ChartPro } from './types'
 
 import EventEmitter from 'eventemitter3'
+import { PeriodBarTool } from './widget/period-bar'
 
 export interface ChartProComponentProps extends Required<Omit<ChartProOptions, 'container'>> {
   ref: (chart: ChartPro) => void
   eventEmmiter: EventEmitter
+  tools?: PeriodBarTool[]
 }
 
 interface PrevSymbolPeriod {
@@ -558,6 +560,7 @@ const ChartProComponent: Component<ChartProComponentProps> = props => {
             setScreenshotUrl(url)
           }
         }}
+        tools={props.tools}
       />
       <div
         class="klinecharts-pro-content">

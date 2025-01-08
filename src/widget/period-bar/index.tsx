@@ -18,6 +18,11 @@ import { SymbolInfo, Period } from '../../types'
 
 import i18n from '../../i18n'
 
+export interface PeriodBarTool {
+  onClick: () => void
+  title: string
+}
+
 export interface PeriodBarProps {
   locale: string
   spread: boolean
@@ -31,6 +36,7 @@ export interface PeriodBarProps {
   onTimezoneClick: () => void
   onSettingClick: () => void
   onScreenshotClick: () => void
+  tools?: PeriodBarTool[]
 }
 
 const PeriodBar: Component<PeriodBarProps> = props => {
@@ -85,6 +91,15 @@ const PeriodBar: Component<PeriodBarProps> = props => {
             onClick={() => { props.onPeriodChange(p) }}>
             {p.text}
           </span>
+        ))
+      }
+      {
+        (props.tools ?? []).map((tool) => (
+          <div
+            class='item tools'
+            onClick={tool.onClick}>
+            <span>{tool.title}</span>
+          </div>
         ))
       }
       <div
