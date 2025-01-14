@@ -74,6 +74,7 @@ export default class KLineChartPro extends EventEmitter implements ChartPro {
           datafeed={options.datafeed}
           eventEmmiter={this}
           tools={options.tools ?? []}
+          chartOption={options.chartOption ?? {}}
         />
       ),
       this._container

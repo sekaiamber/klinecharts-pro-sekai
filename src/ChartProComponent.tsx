@@ -16,7 +16,8 @@ import { createSignal, createEffect, onMount, Show, onCleanup, startTransition, 
 
 import {
   init, dispose, utils, Nullable, Chart, OverlayMode, Styles,
-  TooltipIconPosition, ActionType, PaneOptions, Indicator, DomPosition, FormatDateType
+  TooltipIconPosition, ActionType, PaneOptions, Indicator, DomPosition, FormatDateType,
+  Options
 } from 'klinecharts'
 
 import lodashSet from 'lodash/set'
@@ -180,8 +181,10 @@ const ChartProComponent: Component<ChartProComponentProps> = props => {
 
   onMount(() => {
     window.addEventListener('resize', documentResize)
-    widget = init(widgetRef!, {
+    const options: Options = {
+      ...props.chartOption,
       customApi: {
+        ...(props.chartOption.customApi ?? {}),
         formatDate: (dateTimeFormat: Intl.DateTimeFormat, timestamp, format: string, type: FormatDateType) => {
           const p = period()
           switch (p.timespan) {
@@ -213,9 +216,10 @@ const ChartProComponent: Component<ChartProComponentProps> = props => {
             }
           }
           return utils.formatDate(dateTimeFormat, timestamp, 'YYYY-MM-DD HH:mm')
-        }
+        },
       }
-    })
+    }
+    widget = init(widgetRef!, options)
 
     if (widget) {
       const watermarkContainer = widget.getDom('candle_pane', DomPosition.Main)

@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-import { KLineData, Styles, DeepPartial, Chart } from 'klinecharts'
+import { KLineData, Styles, DeepPartial, Chart, Options } from 'klinecharts'
 import { PeriodBarTool } from './widget/period-bar'
 
 export interface SymbolInfo {
@@ -58,6 +58,7 @@ export interface ChartProOptions {
   subIndicators?: string[]
   datafeed: Datafeed
   tools?: PeriodBarTool[]
+  chartOption?: Options
 }
 
 export interface ChartPro {
