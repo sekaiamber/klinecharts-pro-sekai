@@ -119,6 +119,7 @@ const ChartProComponent: Component<ChartProComponentProps> = props => {
     setPeriod,
     getPeriod: () => period(),
     getCore: () => widget!,
+    getDatafeed: () => props.datafeed,
   })
 
   const documentResize = () => {

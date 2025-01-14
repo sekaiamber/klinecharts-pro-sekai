@@ -74,4 +74,5 @@ export interface ChartPro {
   setPeriod(period: Period): void
   getPeriod(): Period
   getCore(): Chart
+  getDatafeed: () => Datafeed
 }

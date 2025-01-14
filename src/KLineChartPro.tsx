@@ -18,7 +18,7 @@ import { utils, Nullable, DeepPartial, Styles, Chart } from 'klinecharts'
 
 import ChartProComponent from './ChartProComponent'
 
-import { SymbolInfo, Period, ChartPro, ChartProOptions } from './types'
+import { SymbolInfo, Period, ChartPro, ChartProOptions, Datafeed } from './types'
 import EventEmitter from 'eventemitter3'
 
 const Logo = (
@@ -136,5 +136,9 @@ export default class KLineChartPro extends EventEmitter implements ChartPro {
 
   getCore (): Chart {
     return this._chartApi!.getCore()
+  }
+
+  getDatafeed (): Datafeed {
+    return this._chartApi!.getDatafeed()
   }
 }
