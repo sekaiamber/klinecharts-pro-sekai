@@ -56,6 +56,7 @@ export default class KLineChartPro extends EventEmitter implements ChartPro {
           period={options.period}
           periods={
             options.periods ?? [
+              { multiplier: 1, timespan: 'second', text: '1s' },
               { multiplier: 1, timespan: 'minute', text: '1m' },
               { multiplier: 5, timespan: 'minute', text: '5m' },
               { multiplier: 15, timespan: 'minute', text: '15m' },

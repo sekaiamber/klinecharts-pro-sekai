@@ -73,7 +73,6 @@ const DrawingBar: Component<DrawingBarProps> = props => {
             tabIndex={0}
             onBlur={() => { setPopoverKey('') }}>
             <span
-              style="width:32px;height:32px"
               onClick={() => { props.onDrawingItemClick({ groupId: GROUP_ID, name: item.icon, visible: visible(), lock: lock(), mode: mode() as OverlayMode }) }}>
               <Icon name={item.icon} />
             </span>
@@ -120,7 +119,6 @@ const DrawingBar: Component<DrawingBarProps> = props => {
         tabIndex={0}
         onBlur={() => { setPopoverKey('') }}>
         <span
-          style="width:32px;height:32px"
           onClick={() => {
             let currentMode = modeIcon()
             if (mode() !== 'normal') {
@@ -174,7 +172,6 @@ const DrawingBar: Component<DrawingBarProps> = props => {
       <div
         class="item">
         <span
-          style="width:32px;height:32px"
           onClick={() => {
             const currentLock = !lock()
             setLock(currentLock)
@@ -188,7 +185,6 @@ const DrawingBar: Component<DrawingBarProps> = props => {
       <div
         class="item">
         <span
-          style="width:32px;height:32px"
           onClick={() => {
             const v = !visible()
             setVisible(v)
@@ -203,7 +199,6 @@ const DrawingBar: Component<DrawingBarProps> = props => {
       <div
         class="item">
         <span
-          style="width:32px;height:32px"
           onClick={() => { props.onRemoveClick(GROUP_ID) }}>
           <Icon name="remove" />
         </span>
